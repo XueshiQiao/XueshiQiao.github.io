@@ -33,7 +33,7 @@ export default function AppDetail() {
 
       <div className="flex items-center gap-5 mb-8">
         <img
-          src={import.meta.env.BASE_URL + app.icon.slice(1)}
+          src={app.icon.startsWith('http') ? app.icon : import.meta.env.BASE_URL + app.icon.slice(1)}
           alt={app.name}
           className="w-20 h-20 rounded-2xl"
         />

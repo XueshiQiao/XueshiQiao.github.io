@@ -12,7 +12,7 @@ export default function AppCard({ app }: { app: App }) {
         <div className="flex items-start justify-between mb-4 gap-4">
           <div className="flex items-center gap-4">
             <img
-              src={import.meta.env.BASE_URL + app.icon.slice(1)}
+              src={app.icon.startsWith('http') ? app.icon : import.meta.env.BASE_URL + app.icon.slice(1)}
               alt={app.name}
               className="w-14 h-14 rounded-xl"
             />

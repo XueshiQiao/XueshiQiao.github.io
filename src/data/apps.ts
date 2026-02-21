@@ -24,7 +24,7 @@ export const apps: App[] = [
     tagline: 'A powerful yet beautiful clipboard history manager',
     description:
       'PastePaw is a beautiful clipboard history manager for Windows, built with Rust + Tauri + React + TypeScript. It automatically saves everything you copy, lets you search through your history, organize clips into folders, and even includes AI-powered features for summarizing, translating, and explaining code.',
-    icon: '/images/pastepaw/icon.png',
+    icon: 'https://raw.githubusercontent.com/XueshiQiao/PastePaw/main/src-tauri/icons/128x128.png',
     screenshots: [
       'https://raw.githubusercontent.com/XueshiQiao/PastePaw/main/docs/screenshot_win_light.png',
       'https://raw.githubusercontent.com/XueshiQiao/PastePaw/main/docs/screenshot_win_dark.png',
@@ -53,7 +53,7 @@ export const apps: App[] = [
     tagline: 'A powerful network monitoring tool',
     description:
       'Netstat Cat is a lightweight desktop application built with Tauri v2 and Rust, providing a user-friendly interface for monitoring network connections on macOS and Windows. It serves as a graphical replacement for the command-line netstat tool, with real-time connection tracking and advanced filtering capabilities.',
-    icon: '/images/netstat-cat/icon.png',
+    icon: 'https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/src-tauri/icons/128x128.png',
     screenshots: [
       'https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/00-light.png',
       'https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/01-dark.png',
@@ -82,7 +82,7 @@ export const apps: App[] = [
     tagline: 'Vim-style navigation for your entire OS',
     description:
       'HyperCapslock is a lightweight Windows utility that brings Vim-style navigation (H/J/K/L) to the entire operating system. Use CapsLock as a modifier key for arrow keys, word navigation, line start/end, and more — in any application. Built with Rust and the Windows API for zero-latency interception.',
-    icon: '/images/hypercapslock/icon.png',
+    icon: 'https://raw.githubusercontent.com/XueshiQiao/HyperCapslock/main/src-tauri/icons/128x128.png',
     screenshots: ['https://raw.githubusercontent.com/XueshiQiao/HyperCapslock/main/public/HyperCapslock.png'],
     features: [
       'Global Vim-style H/J/K/L navigation',
@@ -106,7 +106,7 @@ export const apps: App[] = [
     tagline: 'Never miss a prompt again',
     description:
       'Notifier is a macOS app that routes permission requests from AI agentic code tools to native notifications. Built with Swift and SwiftUI, it activates the source app when you click the notification banner, supports callback URLs, and is compatible with Claude Code, Gemini CLI, and any agentic coding tool that supports hooks.',
-    icon: '/images/notifier/icon.png',
+    icon: 'https://raw.githubusercontent.com/XueshiQiao/Notifier/main/Notifier/Assets.xcassets/AppIcon.appiconset/128.png',
     screenshots: [
       'https://raw.githubusercontent.com/XueshiQiao/Notifier/main/docs/screenshot_01.png',
     ],
