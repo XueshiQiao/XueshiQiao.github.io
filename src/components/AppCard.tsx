@@ -44,7 +44,7 @@ export default function AppCard({ app }: { app: App }) {
             )}
           </div>
 
-          <p className="text-slate-300 text-sm mb-6 leading-relaxed relative z-10">{app.tagline}</p>
+          <p className="text-slate-300 text-sm mb-3 leading-relaxed relative z-10">{app.tagline}</p>
 
           <div className="flex flex-wrap gap-2 mb-6 relative z-10">
             {app.techStack.map((tech) => (
