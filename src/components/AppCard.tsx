@@ -43,7 +43,7 @@ export default function AppCard({ app }: { app: App }) {
           )}
         </div>
 
-        <p className="text-slate-300 text-sm mb-6 flex-1 leading-relaxed relative z-10">{app.tagline}</p>
+        <p className="text-slate-300 text-sm mb-6 leading-relaxed relative z-10">{app.tagline}</p>
 
         <div className="flex flex-wrap gap-2 mb-6 relative z-10">
           {app.techStack.map((tech) => (
@@ -51,27 +51,50 @@ export default function AppCard({ app }: { app: App }) {
           ))}
         </div>
 
-        {app.brewCommand && (
-          <div className="mb-6 relative z-10">
-            <div className="text-[10px] text-slate-500 mb-1.5 font-bold uppercase tracking-widest">Install via Homebrew</div>
-            <div 
-              className="flex items-center justify-between bg-dark-900/50 border border-white/10 rounded-lg p-2.5 cursor-pointer hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all group/cmd"
-              onClick={(e) => handleCopy(e, app.brewCommand!)}
-              title="Copy install command"
-            >
-              <code className="text-xs font-mono text-slate-300 truncate mr-3 flex-1">{app.brewCommand}</code>
-              <button className="text-slate-400 group-hover/cmd:text-accent-blue transition-colors shrink-0 p-1">
-                {copied ? (
-                  <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        {(app.brewCommand || app.platform.includes('Windows')) && (
+          <div className="mb-6 relative z-10 space-y-3">
+            {app.brewCommand && (
+              <div>
+                <div className="text-[10px] text-slate-500 mb-1.5 font-bold uppercase tracking-widest">macOS - Install via Homebrew</div>
+                <div 
+                  className="flex items-center justify-between bg-dark-900/50 border border-white/10 rounded-lg p-2.5 cursor-pointer hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all group/cmd"
+                  onClick={(e) => handleCopy(e, app.brewCommand!)}
+                  title="Copy install command"
+                >
+                  <code className="text-xs font-mono text-slate-300 truncate mr-3 flex-1">{app.brewCommand}</code>
+                  <button className="text-slate-400 group-hover/cmd:text-accent-blue transition-colors shrink-0 p-1">
+                    {copied ? (
+                      <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {app.platform.includes('Windows') && (
+              <div>
+                <div className="text-[10px] text-slate-500 mb-1.5 font-bold uppercase tracking-widest">Windows</div>
+                <a 
+                  href={`${app.githubUrl}/releases/latest`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center justify-start gap-2.5 bg-dark-900/50 border border-white/10 rounded-lg p-2.5 hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all text-sm font-medium text-slate-300 hover:text-white group/win"
+                  title="Download latest Windows release"
+                >
+                  <svg className="w-4 h-4 text-slate-400 group-hover/win:text-accent-blue transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
                   </svg>
-                ) : (
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                  </svg>
-                )}
-              </button>
-            </div>
+                  Download
+                </a>
+              </div>
+            )}
           </div>
         )}
 
