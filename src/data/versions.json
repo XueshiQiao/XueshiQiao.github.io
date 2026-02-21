@@ -1,7 +1,15 @@
 {
+  "pastepaw": {
+    "version": "1.2.5",
+    "pubDate": "2026-02-20T08:28:14.356Z"
+  },
+  "netstat-cat": {
+    "version": "0.1.1",
+    "pubDate": "2026-02-17T17:00:43Z"
+  },
   "hypercapslock": {
     "version": "0.8.4",
-    "pubDate": "2026-02-21T08:51:49.243Z"
+    "pubDate": "2026-02-21T10:26:04.958Z"
   },
   "notifier": {
     "version": "1.1.6",
