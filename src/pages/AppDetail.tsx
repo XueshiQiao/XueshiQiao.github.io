@@ -71,26 +71,16 @@ export default function AppDetail() {
         </section>
       )}
 
-      {(app.brewCommand || app.wingetCommand) && (
+      {app.brewCommand && (
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Installation</h2>
           <div className="flex flex-col gap-4">
-            {app.brewCommand && (
-              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-sm text-slate-400 mb-2">macOS (Homebrew)</p>
-                <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
-                  {app.brewCommand}
-                </code>
-              </div>
-            )}
-            {app.wingetCommand && (
-              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <p className="text-sm text-slate-400 mb-2">Windows (Winget)</p>
-                <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
-                  {app.wingetCommand}
-                </code>
-              </div>
-            )}
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+              <p className="text-sm text-slate-400 mb-2">macOS (Homebrew)</p>
+              <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
+                {app.brewCommand}
+              </code>
+            </div>
           </div>
         </section>
       )}
