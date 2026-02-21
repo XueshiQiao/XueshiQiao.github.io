@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { apps } from '../data/apps';
 import TechBadge from '../components/TechBadge';
 import ScreenshotGallery from '../components/ScreenshotGallery';
+import versions from '../data/versions.json';
 
 export default function AppDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +18,9 @@ export default function AppDetail() {
       </div>
     );
   }
+
+  const appVersion = (versions as any)[app.slug]?.version;
+  const pubDate = (versions as any)[app.slug]?.pubDate;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -34,10 +38,25 @@ export default function AppDetail() {
           className="w-20 h-20 rounded-2xl"
         />
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white">
-            {app.name}
-          </h1>
-          <p className="text-slate-400 mt-1">{app.platform}</p>
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl md:text-4xl font-bold text-white">
+              {app.name}
+            </h1>
+            {appVersion && (
+              <span className="px-2.5 py-1 rounded-full bg-accent-blue/20 text-accent-blue text-sm font-medium border border-accent-blue/30">
+                v{appVersion}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-2 mt-1 text-slate-400 text-sm">
+            <span>{app.platform}</span>
+            {pubDate && (
+              <>
+                <span>&bull;</span>
+                <span>Updated: {new Date(pubDate).toLocaleDateString()}</span>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -49,6 +68,30 @@ export default function AppDetail() {
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Screenshots</h2>
           <ScreenshotGallery images={app.screenshots} />
+        </section>
+      )}
+
+      {(app.brewCommand || app.wingetCommand) && (
+        <section className="mb-12">
+          <h2 className="text-xl font-semibold text-white mb-4">Installation</h2>
+          <div className="flex flex-col gap-4">
+            {app.brewCommand && (
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                <p className="text-sm text-slate-400 mb-2">macOS (Homebrew)</p>
+                <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
+                  {app.brewCommand}
+                </code>
+              </div>
+            )}
+            {app.wingetCommand && (
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                <p className="text-sm text-slate-400 mb-2">Windows (Winget)</p>
+                <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
+                  {app.wingetCommand}
+                </code>
+              </div>
+            )}
+          </div>
         </section>
       )}
 
