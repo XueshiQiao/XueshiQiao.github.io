@@ -79,17 +79,17 @@ export default function AppCard({ app }: { app: App }) {
             
             {app.platform.includes('Windows') && (
               <div>
-                <div className="text-[10px] text-slate-500 mb-1.5 font-bold uppercase tracking-widest">Windows</div>
+                <div className="text-[10px] text-slate-500 mb-1.5 font-bold uppercase tracking-widest">Windows & macOS</div>
                 <a 
                   href={`${app.githubUrl}/releases/latest`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                   className="flex items-center justify-start gap-2.5 bg-dark-900/50 border border-white/10 rounded-lg p-2.5 hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all text-sm font-medium text-slate-300 hover:text-white group/win"
-                  title="Download latest Windows release"
+                  title="Download latest release"
                 >
-                  <svg className="w-4 h-4 text-slate-400 group-hover/win:text-accent-blue transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                  <svg className="w-4 h-4 text-slate-400 group-hover/win:text-accent-blue transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                   Download
                 </a>
