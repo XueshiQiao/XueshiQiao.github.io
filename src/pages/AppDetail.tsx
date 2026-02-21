@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { apps } from '../data/apps';
 import TechBadge from '../components/TechBadge';
 import ScreenshotGallery from '../components/ScreenshotGallery';
@@ -7,6 +8,15 @@ import versions from '../data/versions.json';
 export default function AppDetail() {
   const { slug } = useParams<{ slug: string }>();
   const app = apps.find((a) => a.slug === slug);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (e: React.MouseEvent, text: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   if (!app) {
     return (
@@ -71,16 +81,51 @@ export default function AppDetail() {
         </section>
       )}
 
-      {app.brewCommand && (
+      {(app.brewCommand || app.platform.includes('Windows')) && (
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Installation</h2>
           <div className="flex flex-col gap-4">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-              <p className="text-sm text-slate-400 mb-2">macOS (Homebrew)</p>
-              <code className="text-accent-blue font-mono text-sm block bg-black/30 p-3 rounded-lg overflow-x-auto">
-                {app.brewCommand}
-              </code>
-            </div>
+            {app.brewCommand && (
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                <p className="text-sm font-medium text-slate-400 mb-3">macOS - Install via Homebrew</p>
+                <div 
+                  className="flex items-center justify-between bg-dark-900/50 border border-white/10 rounded-lg p-3 cursor-pointer hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all group/cmd"
+                  onClick={(e) => handleCopy(e, app.brewCommand!)}
+                  title="Copy install command"
+                >
+                  <code className="text-sm font-mono text-slate-300 overflow-x-auto mr-4">{app.brewCommand}</code>
+                  <button className="text-slate-400 group-hover/cmd:text-accent-blue transition-colors shrink-0 p-1">
+                    {copied ? (
+                      <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {app.platform.includes('Windows') && (
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                <p className="text-sm font-medium text-slate-400 mb-3">Windows & macOS</p>
+                <a 
+                  href={`${app.githubUrl}/releases/latest`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-dark-900/50 border border-white/10 rounded-lg px-4 py-2.5 hover:bg-dark-900/80 hover:border-accent-blue/50 transition-all text-sm font-medium text-slate-300 hover:text-white group/win"
+                  title="Download latest release"
+                >
+                  <svg className="w-5 h-5 text-slate-400 group-hover/win:text-accent-blue transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download Latest Release
+                </a>
+              </div>
+            )}
           </div>
         </section>
       )}
