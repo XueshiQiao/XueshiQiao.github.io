@@ -6,12 +6,13 @@ export default function ScreenshotGallery({ images }: { images: string[] }) {
   if (images.length === 0) return null;
 
   const base = import.meta.env.BASE_URL;
+  const getImgUrl = (img: string) => img.startsWith('http') ? img : base + img.slice(1);
 
   return (
     <div>
       <div className="glass-card rounded-2xl overflow-hidden mb-4">
         <img
-          src={base + images[selected].slice(1)}
+          src={getImgUrl(images[selected])}
           alt={`Screenshot ${selected + 1}`}
           className="w-full h-auto"
         />
@@ -30,7 +31,7 @@ export default function ScreenshotGallery({ images }: { images: string[] }) {
               }`}
             >
               <img
-                src={base + img.slice(1)}
+                src={getImgUrl(img)}
                 alt={`Thumbnail ${i + 1}`}
                 className="w-24 h-16 object-cover"
               />
