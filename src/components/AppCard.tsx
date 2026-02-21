@@ -19,36 +19,38 @@ export default function AppCard({ app }: { app: App }) {
   return (
     <Link to={`/app/${app.slug}`} className="block h-full group outline-none">
       <div className="glass-card rounded-2xl p-6 h-full flex flex-col relative overflow-hidden transition-all duration-500">
-        <div className="flex items-start justify-between mb-5 gap-4 relative z-10">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <div className="absolute inset-0 bg-accent-blue/20 blur-xl rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <img
-                src={app.icon.startsWith('http') ? app.icon : import.meta.env.BASE_URL + app.icon.slice(1)}
-                alt={app.name}
-                className="w-16 h-16 rounded-2xl shadow-lg border border-white/10 relative z-10 bg-dark-800 object-cover"
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-accent-blue transition-colors">{app.name}</h3>
+        <div className="flex-1 flex flex-col">
+          <div className="flex items-start justify-between mb-5 gap-4 relative z-10">
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-accent-blue/20 blur-xl rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <img
+                  src={app.icon.startsWith('http') ? app.icon : import.meta.env.BASE_URL + app.icon.slice(1)}
+                  alt={app.name}
+                  className="w-16 h-16 rounded-2xl shadow-lg border border-white/10 relative z-10 bg-dark-800 object-cover"
+                />
               </div>
-              <p className="text-sm font-medium text-slate-400 mt-1">{app.platform}</p>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-accent-blue transition-colors">{app.name}</h3>
+                </div>
+                <p className="text-sm font-medium text-slate-400 mt-1">{app.platform}</p>
+              </div>
             </div>
+            {appVersion && (
+              <span className="shrink-0 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300 shadow-sm">
+                v{appVersion}
+              </span>
+            )}
           </div>
-          {appVersion && (
-            <span className="shrink-0 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300 shadow-sm">
-              v{appVersion}
-            </span>
-          )}
-        </div>
 
-        <p className="text-slate-300 text-sm mb-6 leading-relaxed relative z-10">{app.tagline}</p>
+          <p className="text-slate-300 text-sm mb-6 leading-relaxed relative z-10">{app.tagline}</p>
 
-        <div className="flex flex-wrap gap-2 mb-6 relative z-10">
-          {app.techStack.map((tech) => (
-            <TechBadge key={tech} name={tech} />
-          ))}
+          <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+            {app.techStack.map((tech) => (
+              <TechBadge key={tech} name={tech} />
+            ))}
+          </div>
         </div>
 
         {(app.brewCommand || app.platform.includes('Windows')) && (
