@@ -62,7 +62,7 @@ export const apps: App[] = [
       "https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/macos-01.png",
       "https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/macos-03.png",
       "https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/00-light.png",
-      "https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/01-light.png",
+      "https://raw.githubusercontent.com/XueshiQiao/netstat-cat/main/screenshots/01-dark.png",
     ],
     features: [
       "Pure local operation — no data transmission",
@@ -117,6 +117,7 @@ export const apps: App[] = [
     icon: "https://raw.githubusercontent.com/XueshiQiao/Notifier/main/Notifier/Assets.xcassets/AppIcon.appiconset/128.png",
     screenshots: [
       "https://raw.githubusercontent.com/XueshiQiao/Notifier/main/docs/screenshot_01.png",
+      "https://raw.githubusercontent.com/XueshiQiao/Notifier/main/docs/screenshot_02.png",
     ],
     features: [
       "Native macOS experience with Swift & SwiftUI",
