@@ -135,32 +135,4 @@ export const apps: App[] = [
       "https://github.com/XueshiQiao/Notifier/releases/latest/download/latest.json",
     brewCommand: "brew install --cask xueshiqiao/tap/notifier",
   },
-  {
-    slug: "anydrag",
-    name: "AnyDrag",
-    tagline: "Drag any window from anywhere — as smooth as a native title bar",
-    description:
-      "AnyDrag is a macOS menu-bar utility that lets you move any window by holding a modifier key and dragging anywhere on it. Unlike tools that move windows through the Accessibility API (which adds noticeable lag), AnyDrag simulates a native title-bar drag at the window-server level — so it's as smooth as dragging a real title bar. Includes a right-click tiling panel for halves, quarters, and side-by-side layouts, plus a middle-button tile-by-direction gesture.",
-    icon: "https://raw.githubusercontent.com/XueshiQiao/AnyDrag/main/AnyDrag/Assets.xcassets/AppIcon.appiconset/icon_128x128.png",
-    screenshots: [
-      "https://raw.githubusercontent.com/XueshiQiao/AnyDrag/main/Screenshot-01.png",
-      "https://raw.githubusercontent.com/XueshiQiao/AnyDrag/main/tiling_panel.png",
-    ],
-    features: [
-      "Move any window from anywhere — no title-bar reach required",
-      "Native title-bar smoothness (no Accessibility API per-frame lag)",
-      "Configurable modifier: Option, Command, Control, fn, or Option+Command",
-      "Modifier + double-click to maximize/restore",
-      "Right-click tiling panel: halves, quarters, side-by-side, quarters",
-      "Middle-button tile-by-direction gesture (drag back to cancel)",
-      "Bilingual UI (English + 简体中文)",
-      "Signed, notarized, auto-updates via Sparkle",
-    ],
-    techStack: ["Swift", "AppKit", "Sparkle"],
-    platform: "macOS",
-    githubUrl: "https://github.com/XueshiQiao/AnyDrag",
-    latestJsonUrl:
-      "https://github.com/XueshiQiao/AnyDrag/releases/latest/download/latest.json",
-    brewCommand: "brew install --cask xueshiqiao/tap/anydrag",
-  },
 ];
